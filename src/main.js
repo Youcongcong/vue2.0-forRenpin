@@ -3,7 +3,7 @@ import Vue from 'vue'
 import App from './App'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
-
+import 'src/common/js/rem.js'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 //import './assets/theme/theme-green/index.css'
@@ -16,7 +16,9 @@ import routes from './routes'
 import Mock from './mock'
 Mock.bootstrap();
 import 'font-awesome/css/font-awesome.min.css'
+// import Hello from 'components/Hello'
 
+// Vue.component('Hello',Hello)
 Vue.use(ElementUI)
 Vue.use(VueRouter)
 Vue.use(Vuex)
@@ -34,7 +36,6 @@ router.beforeEach((to, from, next) => {
     sessionStorage.removeItem('user');
   }
   let user = JSON.parse(sessionStorage.getItem('user'));
-  console.log(user)
   if (!user && to.path != '/login') {
     next({ path: '/login' })
   } else {

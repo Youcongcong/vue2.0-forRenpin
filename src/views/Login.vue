@@ -26,16 +26,17 @@
       <mt-field  placeholder="请输入用户名" v-model="ruleForm2.account"></mt-field>
       <mt-field  placeholder="请输入密码"  type="password" v-model="ruleForm2.checkPass"></mt-field>
       
-      <div>
       <div style="">
         <mt-checklist
           v-model="value"
           :options="['记住密码']">
         </mt-checklist>
-      </div>
+        </div>
+      <div class="btn_submit">
         <mt-button size="large" type="primary" @click.native.prevent="loginSubmit">登录</mt-button>
       </div>
     </form>
+    <Hello></Hello>
     <div class="quick-login" style="display:">
             <h4 class="txt-otherLogin">其他登录方式</h4>
             <a href="javascript:;" class=" quick-qq"><i class="icon icon-qq"></i><br><span class="txt-qq">QQ</span></a>
@@ -48,6 +49,7 @@
 <script>
   import { requestLogin } from '../api/api';
   import { MessageBox } from 'mint-ui';
+  import Hello from 'components/Hello.vue'
   //import NProgress from 'nprogress'
   export default {
     data() {
@@ -55,10 +57,11 @@
         value:[],
         logining: false,
         ruleForm2: {
-          account: '',
-          checkPass: ''
+          account: 'admin',
+          checkPass: '123456'
         },
         rules2: {
+
           account: [
             { required: true, message: '请输入账号', trigger: 'blur' },
             //{ validator: validaePass }
@@ -78,7 +81,7 @@
             this.logining = true;
             var loginParams = { username: this.ruleForm2.account, password: this.ruleForm2.checkPass };
             requestLogin(loginParams).then(data => {
-              console.log(data)
+             // console.log(data)
               this.logining = false;
               let { msg, code, user } = data;
               if (code !== 200) {
@@ -94,6 +97,9 @@
             return false;
           }
       }
+    },
+    components:{
+      Hello
     }
   }
 
@@ -109,23 +115,26 @@
   }
   .login-container {
     margin:  0 6%;
+    .btn_submit{
+      margin-top:20px;
+    }
     .logo{
-      margin:10% 0 30px 0 ;
+      margin:16% 0 30px 0 ;
       text-align:center;
       img{
         @include wh(19%,19%)
       }
       .tit{
-        font-size:14px;
+        font-size:0.7rem;
         color:rgb(237,137,71)
       }
       .tit-tip{
         color:#bfbfbf;
-        font-size:12px
+        font-size:0.6rem
       }
     }
     .quick-login {
-      margin-top:105px;
+      margin-top:3rem;
       height: 55px;
       position: relative;
       padding: 24.5px 0 0 0;
@@ -133,7 +142,7 @@
       text-align:center;
     h4 {
       position: absolute;
-      top: -29px;
+      top: -11px;
       left: 50%;
       background-color: white;
       padding: 0 10px;
@@ -163,7 +172,6 @@
       .icon-qq {
         left: 38%;
       }
-
     }
     .icon-wx {
       left: 38%;
