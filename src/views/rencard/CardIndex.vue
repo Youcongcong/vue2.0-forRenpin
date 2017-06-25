@@ -1,29 +1,5 @@
 <template>
-	<!--<el-row class="container">
-								<el-col :span="24" class="header">
-									
-									<el-col :span="24" class="userinfo">
-										<el-dropdown trigger="hover">
-											<span class="el-dropdown-link userinfo-inner"><img :src="this.sysUserAvatar" /> {{sysUserName}}</span>
-											<el-dropdown-menu slot="dropdown">
-												<el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
-											</el-dropdown-menu>
-										</el-dropdown>
-									</el-col>
-								</el-col>
-								<el-col :span="24" class="main">		
-									<section class="content-container">
-										<div class="grid-content bg-purple-light">
-											<el-col :span="24" class="content-wrapper">
-												<transition name="fade" mode="out-in">
-													<router-view></router-view>
-												</transition>
-											</el-col>
-										</div>
-									</section>
-								</el-col>
-							</el-row>-->
-	<div>
+	<div class="cardindex">
 		<headerTop :head-title="title" :go-back="true"></headerTop>
 		<div class="top">
 			<bank-card :integral="integral" @childsay="listenTohome"></bank-card>
@@ -43,6 +19,7 @@
 			</mt-swipe>
 		</div>
 		<task-list :task-title="taskTitle" :task-data="taskData"></task-list>
+		<foot_guide></foot_guide>
 	</div>
 </template>
 
@@ -52,6 +29,7 @@
 		SwipeItem
 	} from 'mint-ui';
 	import headerTop from 'components/headTop'
+	import foot_guide from 'components/footer'
 	import taskList from 'components/renpinCard/TaskList'
 	import BankCard from 'components/renpinCard/BankCard'
 	export default {
@@ -206,7 +184,8 @@
 		components: {
 			headerTop,
 			taskList,
-			BankCard
+			BankCard,
+			foot_guide
 		}
 	}
 </script>
@@ -216,7 +195,13 @@
 	.top {
 		margin-top: 1.95rem;
 	}
-	
+	.cardindex{
+		margin-bottom: 1.95rem;
+		background: rgb(247, 243, 243);
+	}
+	#card{
+		background:#fff
+	}
 	.sw-card {
 		height: 7.3rem;
 	}
