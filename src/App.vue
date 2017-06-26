@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<transition name="fade" 
+		<transition name="router-fade" 
 			mode="out-in">
 			<router-view></router-view>
 		</transition>
@@ -87,5 +87,10 @@ a{
 
 .clearfix{ *zoom:1;}   /**//*这是针对于IE6的，因为IE6不支持:after伪类，这个神奇的zoom:1让IE6的元素可以清除浮动来包裹内部元素。*/
 .ellipsis{white-space: nowrap;word-wrap: normal;overflow:hidden; text-overflow:ellipsis;}
-		
+	// .router-fade-enter-active, .router-fade-leave-active {
+    //     transition: opacity .3s;
+    // }
+    // .router-fade-enter, .router-fade-leave-active {
+    //     opacity: 0;
+    // }	
 </style>

@@ -32,53 +32,12 @@
 	import foot_guide from 'components/footer'
 	import taskList from 'components/renpinCard/TaskList'
 	import BankCard from 'components/renpinCard/BankCard'
+	import { getTaskList } from '../../api/api';
 	export default {
 		data() {
 			return {
 				taskTitle: '每月任务，快速加积分', //人品卡 列表头部
-				taskData: [{
-						iconClass: "icon-gift",
-						jifen: "+30积分",
-						contantText: "首次购买定期500元",
-						status: '500'
-					},
-					{
-						iconClass: "icon-delicious",
-						jifen: "+10积分",
-						contantText: "人品货代成功完成一笔接待",
-						status: '未完成'
-					},
-					{
-						iconClass: "icon-gift",
-						jifen: "+30积分",
-						contantText: "首次购买定期500元",
-						status: '已成功购买0/500'
-					},
-					{
-						iconClass: "icon-delicious",
-						jifen: "+10积分",
-						contantText: "人品货代成功完成一笔接待",
-						status: '未完成'
-					},
-					{
-						iconClass: "icon-gift",
-						jifen: "+30积分",
-						contantText: "首次购买定期500元",
-						status: '已成功购买0/500'
-					},
-					{
-						iconClass: "icon-delicious",
-						jifen: "+10积分",
-						contantText: "人品货代成功完成一笔接待",
-						status: '未完成'
-					},
-					{
-						iconClass: "icon-pinterest",
-						jifen: "+100积分",
-						contantText: "成功邀请好友投资并获得佣金",
-						status: '未完成'
-					}
-				],
+				taskData: "",
 				title: '人品卡',
 				baseUrl: 'https://fuss10.elemecdn.com',
 				cardList: [{
@@ -170,6 +129,7 @@
 				this.sysUserAvatar = user.avatar || '';
 				this.integral = user.integral || '';
 			};
+		
 			//取得cardListlen长度
 			let cardListlen = this.cardList.length;
 			//返回一个新数组
@@ -179,7 +139,13 @@
 			for (let i = 0, j = 0; i < cardListlen; i += 8, j++) {
 				cardarr[j] = newarr.splice(0, 8);
 			}
-			this.cardList = cardarr
+			this.cardList = cardarr;
+			//
+			getTaskList().then(data => {
+            	console.log(data)
+				this.taskData = data.data.TaskList
+             
+            });
 		},
 		components: {
 			headerTop,
@@ -197,7 +163,6 @@
 	}
 	.cardindex{
 		margin-bottom: 1.95rem;
-		background: rgb(247, 243, 243);
 	}
 	#card{
 		background:#fff
