@@ -26,13 +26,16 @@
 <script>
 	import {
 		Swipe,
-		SwipeItem
+		SwipeItem,
+		Indicator
 	} from 'mint-ui';
 	import headerTop from 'components/headTop'
 	import foot_guide from 'components/footer'
 	import taskList from 'components/renpinCard/TaskList'
 	import BankCard from 'components/renpinCard/BankCard'
-	import { getTaskList } from '../../api/api';
+	import {
+		getTaskList
+	} from '../../api/api';
 	export default {
 		data() {
 			return {
@@ -96,8 +99,8 @@
 						image_url: "/b/7e/d1890cf73ae6f2adb97caa39de7fcjpeg.jpeg",
 					},
 				],
-				integral: null ,//用户积分,
-				childsay:''
+				integral: null, //用户积分,
+				childsay: ''
 			}
 		},
 		methods: {
@@ -114,38 +117,47 @@
 				});
 			},
 			//获取子组件BankCard 传来的值
-			listenTohome:function(data){
+			listenTohome: function(data) {
 				this.childsay = data;
 				console.log(data)
+			},
+			//获取数据
+			async initdata() {
+				Indicator.open({
+					text: 'Loading...',
+					spinnerType: 'fading-circle'
+				});
+				//获取用户信息
+				let user = sessionStorage.getItem('user');
+				console.log(user)
+				if (user) {
+					user = JSON.parse(user);
+					this.sysUserName = user.name || '';
+					this.sysUserAvatar = user.avatar || '';
+					this.integral = user.integral || '';
+				};
+	
+				//取得cardListlen长度
+				let cardListlen = this.cardList.length;
+				//返回一个新数组
+				let newarr = this.cardList.concat([]);
+				//处理后的数据 
+				let cardarr = [];
+				for (let i = 0, j = 0; i < cardListlen; i += 8, j++) {
+					cardarr[j] = newarr.splice(0, 8);
+				}
+				this.cardList = cardarr;
+	
+				await getTaskList().then(data => {
+					console.log(data)
+					this.taskData = data.data.TaskList
+	
+				});
+				Indicator.close()
 			}
 		},
 		mounted() {
-			//获取用户信息
-			let user = sessionStorage.getItem('user');
-			console.log(user)
-			if (user) {
-				user = JSON.parse(user);
-				this.sysUserName = user.name || '';
-				this.sysUserAvatar = user.avatar || '';
-				this.integral = user.integral || '';
-			};
-		
-			//取得cardListlen长度
-			let cardListlen = this.cardList.length;
-			//返回一个新数组
-			let newarr = this.cardList.concat([]);
-			//处理后的数据 
-			let cardarr = [];
-			for (let i = 0, j = 0; i < cardListlen; i += 8, j++) {
-				cardarr[j] = newarr.splice(0, 8);
-			}
-			this.cardList = cardarr;
-			//
-			getTaskList().then(data => {
-            	console.log(data)
-				this.taskData = data.data.TaskList
-             
-            });
+			this.initdata()			
 		},
 		components: {
 			headerTop,
@@ -161,12 +173,15 @@
 	.top {
 		margin-top: 1.95rem;
 	}
-	.cardindex{
+	
+	.cardindex {
 		margin-bottom: 1.95rem;
 	}
-	#card{
-		background:#fff
+	
+	#card {
+		background: #fff
 	}
+	
 	.sw-card {
 		height: 7.3rem;
 	}

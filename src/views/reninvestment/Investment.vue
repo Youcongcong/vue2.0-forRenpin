@@ -4,7 +4,7 @@
             <router-link to="/messge" slot="messagecenter" class="messri">消息中心</router-link>
         </header-top>
         <div class="ment-main">
-            <mt-loadmore :top-method="loadTop"  ref="loadmore">
+            <mt-loadmore :top-method="loadTop" ref="loadmore">
     
                 <div class="renpin">
                     <div class="alltotal ">
@@ -65,6 +65,7 @@
 </template>
 
 <script>
+    import {Indicator} from 'mint-ui';
     import headerTop from 'components/headTop'
     import foot_guide from 'components/footer'
     export default {
@@ -74,12 +75,16 @@
                 bottomText: ''
             };
         },
+        created: function() {
+            
+        },
         methods: {
             loadTop() {
                 // 加载更多数据
                 this.$refs.loadmore.onTopLoaded();
+    
             },
-            
+    
         },
         components: {
             headerTop,
@@ -108,16 +113,20 @@
     }
     
     .ment-main {
-       top: 1.94rem;
-    position: absolute;
-    background: #F5F5F5;
-    left: 0;
-    right: 0;
-    bottom: 1.94rem;
+        top: 1.94rem;
+        position: absolute;
+        background: #F5F5F5;
+        left: 0;
+        right: 0;
+        bottom: 1.94rem;
     }
-    .mint-loadmore{
-        height:100%
+    .mint-indicator-mask{
+        z-index:999 !important;
     }
+    .mint-loadmore {
+        height: 100%
+    }
+    
     .f_clear:after {
         display: block;
         clear: both;
