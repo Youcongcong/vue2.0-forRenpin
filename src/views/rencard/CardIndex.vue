@@ -129,7 +129,6 @@
 	.sw-card {
 		height: 7.3rem;
 	}
-	
 	.link_to {
 		-webkit-tap-highlight-color: transparent;
 		-webkit-font-smoothing: antialiased;

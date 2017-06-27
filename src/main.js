@@ -2,7 +2,6 @@ import babelpolyfill from 'babel-polyfill'
 import Vue from 'vue'
 import App from './App'
 import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
 import 'src/common/js/rem.js'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
@@ -12,7 +11,15 @@ import Vuex from 'vuex'
 import routes from './routes'
 import Mock from './mock'
 Mock.bootstrap();
-import 'font-awesome/css/font-awesome.min.css'
+import VueLazyload from 'vue-lazyload'
+//定义懒加载插件
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: './img/error.jpg',
+  loading: 'http://cdn.uehtml.com/201402/1392662591495_1140x0.gif',
+  attempt: 1,
+  listenEvents: [ 'scroll', 'mousewheel' ]
+});
 //import NProgress from 'NProgress'
 //import 'nprogress/nprogress.css'
 Vue.use(ElementUI)
