@@ -1,12 +1,8 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import {
-  LoginUsers,
-  Users
-} from './data/user';
-import {
-  TaskList
-} from './data/tasklist';
+import {LoginUsers,Users} from './data/user';
+import {TaskList} from './data/tasklist';
+import {cardList} from './data/cardlist';
 let _Users = Users;
 
 export default {
@@ -34,6 +30,18 @@ export default {
             code: 200,
             msg: '请求成功',
             TaskList :TaskList
+          }]);
+        }, 1000);
+      });
+    })
+    //cardlist
+    mock.onPost('/card/list').reply(param => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve([200, {
+            code: 200,
+            msg: '请求成功',
+            cardList :cardList
           }]);
         }, 1000);
       });
@@ -107,7 +115,7 @@ export default {
             total: total,
             users: mockUsers
           }]);
-        }, 1000);
+        }, 4000);
       });
     });
 

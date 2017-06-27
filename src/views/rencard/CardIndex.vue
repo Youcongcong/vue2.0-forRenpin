@@ -33,9 +33,7 @@
 	import foot_guide from 'components/footer'
 	import taskList from 'components/renpinCard/TaskList'
 	import BankCard from 'components/renpinCard/BankCard'
-	import {
-		getTaskList
-	} from '../../api/api';
+	import {getTaskList,getCardList} from '../../api/api';
 	export default {
 		data() {
 			return {
@@ -43,62 +41,7 @@
 				taskData: "",
 				title: '人品卡',
 				baseUrl: 'https://fuss10.elemecdn.com',
-				cardList: [{
-						id: 15,
-						title: "每月翻牌",
-						image_url: "/b/7e/d1890cf73ae6f2adb97caa39de7fcjpeg.jpeg",
-					},
-					{
-						id: 15,
-						title: "霸气十足",
-						image_url: "/b/7e/d1890cf73ae6f2adb97caa39de7fcjpeg.jpeg",
-					},
-					{
-						id: 15,
-						title: "信用卡还款",
-						image_url: "/b/7e/d1890cf73ae6f2adb97caa39de7fcjpeg.jpeg",
-					},
-					{
-						id: 15,
-						title: "人品专家",
-						image_url: "/b/7e/d1890cf73ae6f2adb97caa39de7fcjpeg.jpeg",
-					},
-					{
-						id: 15,
-						title: "给你花",
-						image_url: "/b/7e/d1890cf73ae6f2adb97caa39de7fcjpeg.jpeg",
-					},
-					{
-						id: 15,
-						title: "人品贷",
-						image_url: "/b/7e/d1890cf73ae6f2adb97caa39de7fcjpeg.jpeg",
-					},
-					{
-						id: 15,
-						title: "美食",
-						image_url: "/b/7e/d1890cf73ae6f2adb97caa39de7fcjpeg.jpeg",
-					},
-					{
-						id: 15,
-						title: "办信用卡",
-						image_url: "/b/7e/d1890cf73ae6f2adb97caa39de7fcjpeg.jpeg",
-					},
-					{
-						id: 15,
-						title: "美食",
-						image_url: "/b/7e/d1890cf73ae6f2adb97caa39de7fcjpeg.jpeg",
-					},
-					{
-						id: 15,
-						title: "美食",
-						image_url: "/b/7e/d1890cf73ae6f2adb97caa39de7fcjpeg.jpeg",
-					},
-					{
-						id: 15,
-						title: "美食",
-						image_url: "/b/7e/d1890cf73ae6f2adb97caa39de7fcjpeg.jpeg",
-					},
-				],
+				cardList: '',
 				integral: null, //用户积分,
 				childsay: ''
 			}
@@ -136,20 +79,21 @@
 					this.sysUserAvatar = user.avatar || '';
 					this.integral = user.integral || '';
 				};
-	
-				//取得cardListlen长度
-				let cardListlen = this.cardList.length;
-				//返回一个新数组
-				let newarr = this.cardList.concat([]);
-				//处理后的数据 
-				let cardarr = [];
-				for (let i = 0, j = 0; i < cardListlen; i += 8, j++) {
-					cardarr[j] = newarr.splice(0, 8);
-				}
-				this.cardList = cardarr;
-	
+				getCardList().then(data =>{
+					//取得cardListlen长度
+					let cardListlen = data.data.cardList.length;
+					//返回一个新数组
+					let newarr = data.data.cardList.concat([]);
+					//处理后的数据 
+					let cardarr = [];
+					for (let i = 0, j = 0; i < cardListlen; i += 8, j++) {
+						cardarr[j] = newarr.splice(0, 8);
+					}
+					this.cardList = cardarr;
+				})
+				
 				await getTaskList().then(data => {
-					console.log(data)
+					
 					this.taskData = data.data.TaskList
 	
 				});

@@ -10,6 +10,8 @@ export const getUserList = params => { return axios.get(`${base}/user/list`, { p
 
 export const getTaskList = params => {return axios.post(`${base}/task/list`,{params : params});}
 
+export const getCardList = params => {return axios.post(`${base}/card/list`,{params : params});}
+
 export const getUserListPage = params => { return axios.get(`${base}/user/listpage`, { params: params }); };
 
 export const removeUser = params => { return axios.get(`${base}/user/remove`, { params: params }); };

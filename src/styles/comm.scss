@@ -11,8 +11,8 @@ body {
     padding: 0px;
 }
 .mint-indicator{
-	-webkit-transition: opacity .1s ease !important;
-    transition: opacity .1s ease !important;
+	-webkit-transition: inherit !important;
+    transition: inherit !important;
 }
 a {
     display: inline-block;

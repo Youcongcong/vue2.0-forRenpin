@@ -13,9 +13,8 @@ import routes from './routes'
 import Mock from './mock'
 Mock.bootstrap();
 import 'font-awesome/css/font-awesome.min.css'
-// import Hello from 'components/Hello'
-
-// Vue.component('Hello',Hello)
+//import NProgress from 'NProgress'
+//import 'nprogress/nprogress.css'
 Vue.use(ElementUI)
 Vue.use(VueRouter)
 Vue.use(Vuex)
@@ -29,6 +28,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   //NProgress.start();
+  //next()
   if (to.path == '/login') {
     sessionStorage.removeItem('user');
   }
@@ -38,7 +38,10 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
-})
+});
+// router.afterEach(transition =>{
+//   NProgress.done();
+// })
 
 
 
