@@ -1,78 +1,82 @@
 <template>
-    <div class="profile">
-        <div class="details">
-            <ul class="in-list bdbr-1px bdbt-1px">
-                <li>
-                    <div class="in-item  my-item">
-                        <div class="couponIn-icon w-18">
-                            <img src="../../images/v1/lock.png"></div>
-                        <div class="in-item-info my-item bdbr-1px">
-                            <div class="fl">
-                                <span class="profile-Order">京东火车票</span>
-                            </div>
-                            <div class="frddd">
-                                <span class="profile-AllOrder">来京东轻松抢票</span>
-                                <span class="profile-arrow"></span>
-                            </div>
-                        </div>
+    <div class="index">
+        <header-Top></header-Top>
+        <div class="content">
+            <div class="ment-main">
+                <div class="profile">
+                    <banner :banner-list="bannerList"></banner>
+                    <div class="details">
+                        <ul class="in-list bdbr-1px bdbt-1px">
+                            <cell :cell-list="cellList"></cell>
+                        </ul>
                     </div>
-                </li>
-                <li>
-                    <div class="in-item  my-item">
-                        <div class="couponIn-icon w-18">
-                            <img src="../../images/v1/desigin.png"></div>
-                        <div class="in-item-info my-item bdbr-1px">
-                            <div class="fl">
-                                <span class="profile-Order">1元抢宝</span>
-                            </div>
-                            <div class="frddd">
-                                <span class="profile-AllOrder">1元成就梦想</span>
-                                <span class="profile-arrow"></span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="in-item  my-item">
-                        <div class="couponIn-icon w-18">
-                            <img src="../../images/v1/bancheck.png"></div>
-                        <div class="in-item-info my-item bdbr-1px">
-                            <div class="fl">
-                                <span class="profile-Order">我的预约</span>
-                            </div>
-                            <div class="frddd">
-                                <span class="profile-AllOrder"></span>
-                                <span class="profile-arrow"></span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="in-item  my-item">
-                        <div class="couponIn-icon w-18">
-                            <img src="../../images/v1/cleardom.png"></div>
-                        <div class="in-item-info my-item bdbr-1px">
-                            <div class="fl">
-                                <span class="profile-Order">我的必购码</span>
-                            </div>
-                            <div class="frddd">
-                                <span class="profile-AllOrder"></span>
-                                <span class="profile-arrow"></span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-    
-            </ul>
+                </div>
+            </div>
+            
         </div>
+        <foot_guide></foot_guide>
     </div>
 </template>
 
 <script>
-    
+    import headerTop from 'components/headTop'
+    import foot_guide from 'components/footer'
+    import cell from 'components/cell'
+    import banner from 'components/banner'
+    export default {
+        data() {
+            return {
+                bannerList: [{
+                        link: '/Login',
+                        imageUrl: 'https://m.360buyimg.com/mobilecms/s720x322_jfs/t6667/290/1495913339/208769/20caf282/595321b3N70d63c46.jpg!q70.jpg'
+                    },
+                    {
+                        link: '/Login',
+                        imageUrl: 'https://img1.360buyimg.com/da/jfs/t5638/255/4340728551/99084/71c4f46d/594cccd9Nc18d4386.jpg'
+                    },
+                    {
+                        link: '/Login',
+                        imageUrl: 'https://m.360buyimg.com/mobilecms/s720x322_jfs/t6175/87/1527048471/155328/21a0964c/59538faaNde929d6a.jpg!q70.jpg'
+                    },
+                    {
+                        link: '/Login',
+                        imageUrl: 'https://img1.360buyimg.com/da/jfs/t4567/146/2427964850/85636/894eb2e3/58ef3525N7d6d38b4.jpg'
+                    },
+                    {
+                        link: '/Login',
+                        imageUrl: 'https://m.360buyimg.com/mobilecms/s720x322_jfs/t5905/159/3522388799/140115/cb15e51b/59522c58N1618a960.jpg!q70.jpg'
+                    }
+                ],
+                cellList: [{
+                        iconClass: 'icon-gift',
+                        text: '关于我们'
+                    },
+                    {
+                        iconClass: 'icon-chrome',
+                        text: '帮助中心'
+                    },
+                    {
+                        iconClass: 'icon-linkedin',
+                        text: '信息披露'
+                    }
+                ]
+            }
+        },
+        components: {
+            headerTop,
+            foot_guide,
+            cell,
+            banner
+        }
+    }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+    .profile {
+        height: 100%;
+        background: #f9f9f9;
+    }
+    
     .in-list {
         width: 100%;
         background-color: white;
@@ -100,7 +104,6 @@
     .in-list .in-item {
         height: 44px;
         line-height: 44px;
-        padding: 0 0 0 10px;
         width: 100%;
         overflow: hidden;
         display: -webkit-box;
@@ -147,6 +150,11 @@
     .fl {
         float: left;
         font-size: 0;
+        font-size: 0.6rem;
+        i {
+            margin: 2px 8px 0 5px;
+            vertical-align: middle;
+        }
     }
     
     .frddd {
@@ -164,17 +172,6 @@
         font-size: 12px;
         color: #848689;
         margin-right: 3px;
-    }
-    
-    .profile-arrow {
-        width: 11px;
-        height: 15px;
-        background-position: 0 -20px;
-        vertical-align: middle;
-        margin-top: 2px;
-        display: block;
-        background: url(../../images/v1/nextpre.png) no-repeat;
-        background-size: 8px 15px;
     }
     
     .bdbr-1px:after {

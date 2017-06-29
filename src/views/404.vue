@@ -6,9 +6,9 @@
             <div class="">
                 <p class="page-container">404 page not found</p>
                 <h1>vuex 测试</h1>
-                Clicked: {{ getCount }} times {{getNum}}
-                <button @click="increment">+</button>
-                <button @click="decrement">-</button>
+                Clicked: {{ getCount }} times 
+                <button @click="add">+</button>
+                <button @click="dec">-</button>
             </div>
         </transition>
     </div>
@@ -33,13 +33,15 @@
             console.log(mapActions)
         },
         methods: {
-            ...mapActions([
-                'increment', // 映射 this.increment() 为 this.$store.dispatch('increment')
-                'decrement'
-            ])
-            //...mapActions({
-            //  add: 'increment' // 映射 this.add() 为 this.$store.dispatch('increment')
-            //})
+            // ...mapActions([
+            //     'increment', // 映射 this.increment() 为 this.$store.dispatch('increment')
+            //     'decrement'
+            // ])
+            ...mapActions({
+            //触发mutations定义的increment方法
+             add: 'increment', // 映射 this.add() 为 this.$store.dispatch('increment')
+             dec: 'decrement'
+            })
         },
         components: {
             headerTop
@@ -56,12 +58,12 @@
     
     .router-fade-enter-active,
     .router-fade-leave-active {
-        transition: all .2s;
+        transition: all .4s;
     }
-    
     .router-fade-enter,
     .router-fade-leave-active {
+        transform: translate3d(2rem, 0, 0);
         opacity: 0;
-        transform: translate3d(1rem, 0, 0);
     }
+   
 </style>

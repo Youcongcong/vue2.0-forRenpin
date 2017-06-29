@@ -15,7 +15,7 @@ import VueLazyload from 'vue-lazyload'
 //定义懒加载插件
 Vue.use(VueLazyload, {
   preLoad: 1.3,
-  error: './img/error.jpg',
+  error: 'static/logo@2x.png',
   loading: 'http://cdn.uehtml.com/201402/1392662591495_1140x0.gif',
   attempt: 1,
   listenEvents: [ 'scroll', 'mousewheel' ]
@@ -49,8 +49,6 @@ router.beforeEach((to, from, next) => {
 // router.afterEach(transition =>{
 //   NProgress.done();
 // })
-
-
 
 new Vue({
   //el: '#app',

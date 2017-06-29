@@ -4,6 +4,7 @@ const Form = r => require.ensure([], () => r(require('./views/nav1/Form')), ' Fo
 const Cardindex = r => require.ensure([], () => r(require('./views/rencard/CardIndex')), 'Cardindex')
 const Login = r => require.ensure([], () => r(require('./views/Login')), 'Login')
 const investment = r => require.ensure([], () => r(require('./views/reninvestment/Investment')), ' investment')
+const profile = r => require.ensure([], () => r(require('./views/profile/profile')), ' profile')
 let routes = [
     //登录页
     {
@@ -36,7 +37,11 @@ let routes = [
         component: investment,
         path: '/investment',
     },
-   
+   {
+       name:'profile',
+       component:profile,
+       path:'/profile'
+   },
     {
         path: '*',
         hidden: true,

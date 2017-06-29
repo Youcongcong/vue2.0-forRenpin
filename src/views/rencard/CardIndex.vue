@@ -1,24 +1,30 @@
 <template>
-	<div class="cardindex">
+	<div class="cardindex index">
 		<headerTop :head-title="title" :go-back="true"></headerTop>
-		<div class="top">
-			<bank-card :integral="integral" @childsay="listenTohome"></bank-card>
-		</div>
-		<div class="cc">{{childsay}}</div>
-		<div class="sw-card clearfix" id="card">
-			<mt-swipe :auto="4000" :show-indicators="false">
-				<mt-swipe-item v-for="(item , index) in cardList" :key="index">
-					<div v-for="card in item" :key="card.id" class="link_to">
-						<router-link :to="{}">
-							<img :src="baseUrl+card.image_url" alt="">
-							<p>{{card.title}}</p>
-						</router-link>
-					</div>
-				</mt-swipe-item>
+		<div class="content">
+			<div class="ment-main">
 	
-			</mt-swipe>
+				<div class="top">
+					<bank-card :integral="integral" @childsay="listenTohome"></bank-card>
+				</div>
+				<div class="cc">{{childsay}}</div>
+				<div class="sw-card clearfix" id="card">
+					<mt-swipe :auto="4000" :show-indicators="false">
+						<mt-swipe-item v-for="(item , index) in cardList" :key="index">
+							<div v-for="card in item" :key="card.id" class="link_to">
+								<router-link :to="{}">
+									<img :src="baseUrl+card.image_url" alt="">
+									<p>{{card.title}}</p>
+								</router-link>
+							</div>
+						</mt-swipe-item>
+	
+					</mt-swipe>
+				</div>
+				<task-list :task-title="taskTitle" :task-data="taskData"></task-list>
+			</div>
 		</div>
-		<task-list :task-title="taskTitle" :task-data="taskData"></task-list>
+	
 		<foot_guide></foot_guide>
 	</div>
 </template>
@@ -33,7 +39,10 @@
 	import foot_guide from 'components/footer'
 	import taskList from 'components/renpinCard/TaskList'
 	import BankCard from 'components/renpinCard/BankCard'
-	import {getTaskList,getCardList} from '../../api/api';
+	import {
+		getTaskList,
+		getCardList
+	} from '../../api/api';
 	export default {
 		data() {
 			return {
@@ -79,7 +88,7 @@
 					this.sysUserAvatar = user.avatar || '';
 					this.integral = user.integral || '';
 				};
-				getCardList().then(data =>{
+				getCardList().then(data => {
 					//取得cardListlen长度
 					let cardListlen = data.data.cardList.length;
 					//返回一个新数组
@@ -91,9 +100,9 @@
 					}
 					this.cardList = cardarr;
 				})
-				
+	
 				await getTaskList().then(data => {
-					
+	
 					this.taskData = data.data.TaskList
 	
 				});
@@ -101,7 +110,7 @@
 			}
 		},
 		mounted() {
-			this.initdata()			
+			this.initdata()
 		},
 		components: {
 			headerTop,
@@ -114,14 +123,6 @@
 
 <style scoped lang="scss">
 	@import '~scss_page';
-	.top {
-		margin-top: 1.95rem;
-	}
-	
-	.cardindex {
-		margin-bottom: 1.95rem;
-	}
-	
 	#card {
 		background: #fff
 	}
@@ -129,6 +130,7 @@
 	.sw-card {
 		height: 7.3rem;
 	}
+	
 	.link_to {
 		-webkit-tap-highlight-color: transparent;
 		-webkit-font-smoothing: antialiased;

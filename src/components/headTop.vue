@@ -28,7 +28,7 @@
     @import '~scss_page';
     #head_top {
         background-color: $theme-color;
-        position: fixed;
+        position: relative;
         z-index: 100;
         left: 0;
         top: 0;

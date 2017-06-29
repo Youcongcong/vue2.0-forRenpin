@@ -18,7 +18,7 @@ const TaskList = [{
         status: '已成功购买0/500'
     },
     {
-        iconClass: "icon-delicious",
+        iconClass: "icon-gift",
         jifen: "+10积分",
         contantText: "人品货代成功完成一笔接待",
         status: '未完成'

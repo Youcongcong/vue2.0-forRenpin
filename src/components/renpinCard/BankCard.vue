@@ -129,7 +129,7 @@
     
             <div class="bottom-bar clearfix">
                 <ul class="steps  clearfix">
-                    <li :class="{select:bankType=='putong'}" @click="chooseBankType($index)">
+                    <li :class="{select:bankType=='putong'}" @click="chooseBankType('putong')">
                         <div class="triangle-down"></div>
                         普卡
                     </li>

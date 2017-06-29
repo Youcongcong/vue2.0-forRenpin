@@ -90,7 +90,7 @@
                 MessageBox.alert(msg,'提示',);
               } else {
                  sessionStorage.setItem('user', JSON.stringify(user));
-                 this.$router.push({ path: '/Cardindex' });
+                 this.$router.push({ path: '/investment' });
               }
             });
           } else {
