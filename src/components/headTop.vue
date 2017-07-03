@@ -12,6 +12,7 @@
 
 <script>
     export default {
+        name: 'head_top',
         data() {
             return {
     
@@ -25,6 +26,7 @@
 </script>
 
 <style lang="scss" scoped>
+
     @import '~scss_page';
     #head_top {
         background-color: $theme-color;

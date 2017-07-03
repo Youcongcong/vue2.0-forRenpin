@@ -24,8 +24,9 @@
 				<task-list :task-title="taskTitle" :task-data="taskData"></task-list>
 			</div>
 		</div>
-	
+	{{getShowStause}}
 		<foot_guide></foot_guide>
+		<loading v-show="getShowStause"></loading>
 	</div>
 </template>
 
@@ -37,8 +38,13 @@
 	} from 'mint-ui';
 	import headerTop from 'components/headTop'
 	import foot_guide from 'components/footer'
+	import loading from 'components/loading'
 	import taskList from 'components/renpinCard/TaskList'
 	import BankCard from 'components/renpinCard/BankCard'
+	import {
+        mapGetters,
+        mapActions
+    } from 'vuex'
 	import {
 		getTaskList,
 		getCardList
@@ -55,19 +61,13 @@
 				childsay: ''
 			}
 		},
+		computed:{
+			...mapGetters([
+                'getShowStause'
+            ])
+		},
 		methods: {
-			//退出登录
-			logout: function() {
-				var _this = this;
-				this.$confirm('确认退出吗?', '提示', {
-					//type: 'warning'
-				}).then(() => {
-					sessionStorage.removeItem('user');
-					_this.$router.push('/login');
-				}).catch(() => {
-	
-				});
-			},
+			
 			//获取子组件BankCard 传来的值
 			listenTohome: function(data) {
 				this.childsay = data;
@@ -75,13 +75,14 @@
 			},
 			//获取数据
 			async initdata() {
-				Indicator.open({
-					text: 'Loading...',
-					spinnerType: 'fading-circle'
-				});
+				// Indicator.open({
+				// 	text: 'Loading...',
+				// 	spinnerType: 'fading-circle'
+				// });
 				//获取用户信息
 				let user = sessionStorage.getItem('user');
-				console.log(user)
+				//console.log(user)
+				console.log(this.$store.state.userInfo)
 				if (user) {
 					user = JSON.parse(user);
 					this.sysUserName = user.name || '';
@@ -106,7 +107,7 @@
 					this.taskData = data.data.TaskList
 	
 				});
-				Indicator.close()
+				//Indicator.close()
 			}
 		},
 		mounted() {
@@ -116,7 +117,8 @@
 			headerTop,
 			taskList,
 			BankCard,
-			foot_guide
+			foot_guide,
+			loading
 		}
 	}
 </script>

@@ -61,8 +61,11 @@ a {
     display: inline-block;
     font-size: 0.7rem;
     text-decoration: none;
+    color: #797474
 }
-
+.mint-button--primary {
+    background: $theme-color;
+  }
 #app {
     position: absolute;
     top: 0px;
@@ -73,7 +76,9 @@ a {
 .mint-indicator-mask {
     z-index: 999
 }
-
+input{
+    border: none
+}
 .mint-indicator-wrapper {
     z-index: 888
 }
@@ -101,12 +106,13 @@ a {
 
 .fade-enter-active,
 .fade-leave-active {
-    transition: all .2s ease;
+    transition: opacity .3s;
 }
 
 .fade-enter,
 .fade-leave-active {
     opacity: 0;
+        
 }
 
 .clearfix:after {

@@ -1,10 +1,12 @@
-//webpack按需加载组件 webpack必须2.0以上
-const NotFound = r => require.ensure([], () => r(require('./views/404')), ' NotFound')
-const Form = r => require.ensure([], () => r(require('./views/nav1/Form')), ' Form')
-const Cardindex = r => require.ensure([], () => r(require('./views/rencard/CardIndex')), 'Cardindex')
-const Login = r => require.ensure([], () => r(require('./views/Login')), 'Login')
-const investment = r => require.ensure([], () => r(require('./views/reninvestment/Investment')), ' investment')
-const profile = r => require.ensure([], () => r(require('./views/profile/profile')), ' profile')
+import NotFound from './views/404'
+import Form from './views/nav1/Form'
+import Cardindex from './views/rencard/CardIndex'
+import Login from './views/Login'
+import investment from './views/reninvestment/Investment'
+import profile from './views/profile/profile'
+//充值
+import rechar from './views/Recharge/rechargev'
+//提现
 let routes = [
     //登录页
     {
@@ -33,18 +35,23 @@ let routes = [
     },
     //人品投资首页
     {
-        name:'investment',
+        name: 'investment',
         component: investment,
         path: '/investment',
+
     },
-   {
-       name:'profile',
-       component:profile,
-       path:'/profile'
-   },
+    {
+        name: 'rechar',
+        component: rechar,
+        path: '/rechar/:handeltype'
+    },
+    {
+        name: 'profile',
+        component: profile,
+        path: '/profile'
+    },
     {
         path: '*',
-        hidden: true,
         redirect: {
             path: '/404'
         }

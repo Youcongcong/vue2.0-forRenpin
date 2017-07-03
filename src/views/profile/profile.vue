@@ -10,10 +10,12 @@
                             <cell :cell-list="cellList"></cell>
                         </ul>
                     </div>
+                    <div class="layOut" @click="logout">退出登录</div>
                 </div>
             </div>
-            
+    
         </div>
+    
         <foot_guide></foot_guide>
     </div>
 </template>
@@ -23,6 +25,7 @@
     import foot_guide from 'components/footer'
     import cell from 'components/cell'
     import banner from 'components/banner'
+    import { MessageBox } from 'mint-ui';
     export default {
         data() {
             return {
@@ -67,11 +70,36 @@
             foot_guide,
             cell,
             banner
+        },
+        methods:{
+            //退出登录
+			logout: function() {
+				var _this = this;
+                MessageBox.confirm('确认退出吗?').then(action => {
+                    sessionStorage.removeItem('user');
+				    _this.$router.push('/login');
+                });
+				
+			}
         }
     }
 </script>
 
 <style scoped lang="scss">
+    .layOut {
+        background: #fff;
+        text-indent: 2rem;
+        height: 44px;
+        line-height: 44px;
+        width: 100%;
+        overflow: hidden;
+        display: -webkit-box;
+        display: -moz-box;
+        vertical-align: middle;
+        color:#f97e7e;
+        margin-top:10px
+    }
+    
     .profile {
         height: 100%;
         background: #f9f9f9;

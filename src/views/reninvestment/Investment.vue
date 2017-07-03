@@ -3,6 +3,7 @@
         <header-top :head-title="'人品投资'">
             <router-link to="/messge" slot="messagecenter" class="messri">消息中心</router-link>
         </header-top>
+    
         <div class="content">
             <div class="ment-main">
                 <mt-loadmore :top-method="loadTop" ref="loadmore">
@@ -10,25 +11,33 @@
                     <div class="renpin">
                         <div class="alltotal ">
                             <div class="clowh">昨日收益(元)<span></span></div>
-                            <div class="clowh aftermoney">0.00</div>
+                            <div class="clowh aftermoney">{{shouyi}}</div>
                             <div class="clowh">总资产(元)</div>
-                            <div class="clowh afallmoney">0.00</div>
+                            <div class="clowh afallmoney">{{money}}</div>
                         </div>
                         <div class="payaessay f_clear">
-                            <span class="pay">充值</span>
-                            <span>取现</span>
+                            <span class="pay">
+                                <router-link :to="{ name: 'rechar', params: {handeltype:1}}">
+                                        充值
+                                    </router-link>
+                                </span>
+                            <span>
+                                <router-link :to="{ name: 'rechar', params: {handeltype:2}}">
+                                    取现
+                                </router-link>
+                            </span>
                         </div>
                         <div class="prolist">
                             <div class="balance f_clear">
                                 <div class="proname"><span>余额(4.43%)</span><span class="prodes ">自动竞购人品宝</span></div>
-                                <div class="promon">￥0.00</div>
+                                <div class="promon">￥{{balance}}</div>
                             </div>
                             <div class="balance f_clear">
-                                <div class="proname"><span>余额(4.43%)</span><span class="prodes ">自动竞购人品宝</span></div>
-                                <div class="promon">￥0.00</div>
+                                <div class="proname"><span>人品宝(6.10%)</span><span class="prodes ">存取便捷，收益稳健</span></div>
+                                <div class="promon">￥{{yuebao}}</div>
                             </div>
                             <div class="balance f_clear">
-                                <div class="proname"><span>余额(4.43%)</span><span class="prodes f_fnt2">自动竞购人品宝</span></div>
+                                <div class="proname"><span>人品宝定期(4.43%)</span><span class="prodes f_fnt2">短期免排队，长期收益高</span></div>
                                 <div class="promon">￥0.00</div>
                             </div>
                             <div class="balance f_clear">
@@ -63,31 +72,50 @@
             </div>
         </div>
         <foot_guide></foot_guide>
+    
+        <transition name="router-slid" mode="out-in">
+            <router-view></router-view>
+        </transition>
     </div>
 </template>
 
 <script>
     import {
-        Indicator
-    } from 'mint-ui';
+        mapGetters,
+        mapActions
+    } from 'vuex'
     import headerTop from 'components/headTop'
     import foot_guide from 'components/footer'
     export default {
         name: 'Investment',
         data() {
             return {
-                bottomText: ''
+                bottomText: '',
+                money: '', //总资产
+                shouyi: '', //收益
+                balance: '', //余额
+                yuebao: ''
             };
         },
         created: function() {
+            const useInfo = this.$store.state.userInfo;
+            this.money = useInfo.money;
+            this.yuebao = useInfo.yuebao;
+            this.balance = useInfo.balance;
+            this.shouyi = useInfo.shouyi;
     
         },
         methods: {
-            loadTop() {
-                // 加载更多数据
-                this.$refs.loadmore.onTopLoaded();
+            ...mapActions([
+                'getuse'
+            ]),
+            loadTop(id) {
+                setTimeout(() => {
+                    this.$refs.loadmore.onTopLoaded(id);
+                }, 1500);
     
-            },
+            }
+    
     
         },
         components: {
@@ -99,8 +127,6 @@
 
 <style lang="scss">
     @import '~scss_page';
-    
-    
     .change_city {
         right: 0.4rem;
         @include sc(0.6rem, #fff);
@@ -117,8 +143,6 @@
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
     }
-    
-    
     
     .mint-indicator-mask {
         z-index: 999 !important;
@@ -229,9 +253,9 @@
     .explain .state {
         background: #fff;
         color: #B3B3B3;
-        padding-top: 5%;
+        padding: 3%;
         text-align: center;
-        font-size: 0.6rem;
+        font-size: 0.5rem;
     }
     
     .explain .zijin {
@@ -248,7 +272,7 @@
         background: #fff;
         margin: 5% 0;
         color: #B3B3B3;
-        font-size: 12px;
+        font-size: 0.5rem;
     }
     
     .explain .custanum .accrumony {
@@ -266,6 +290,7 @@
     
     .leiji {
         float: left;
+        margin: 3%
     }
     
     .leiji span {
@@ -274,7 +299,7 @@
     
     .jepic {
         float: left;
-        margin: 3% 0 0 24%;
+        margin: 7% 0 0 24%;
     }
     
     .jpmm {
@@ -293,5 +318,16 @@
         background-size: 20px;
         display: inline-block;
         vertical-align: middle
+    }
+    
+    .router-slid-enter-active,
+    .router-slid-leave-active {
+        transition: all .3s;
+    }
+    
+    .router-slid-enter,
+    .router-slid-leave-active {
+        transform: translate3d(2rem, 0, 0);
+        opacity: 0;
     }
 </style>
