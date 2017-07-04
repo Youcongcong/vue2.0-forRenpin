@@ -1,6 +1,6 @@
 <template>
 	<div class="cardindex index">
-		<headerTop :head-title="title" :go-back="true"></headerTop>
+		<headerTop :head-title="title" ></headerTop>
 		<div class="content">
 			<div class="ment-main">
 	
@@ -24,7 +24,6 @@
 				<task-list :task-title="taskTitle" :task-data="taskData"></task-list>
 			</div>
 		</div>
-	{{getShowStause}}
 		<foot_guide></foot_guide>
 		<loading v-show="getShowStause"></loading>
 	</div>

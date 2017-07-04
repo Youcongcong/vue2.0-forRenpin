@@ -10,7 +10,7 @@
                     <div class="jin">
                         <label for="">金额</label>
                         <input v-if="handeltype == 1" type="text" id="jine" placeholder="5元起充" v-model="chongzhi">
-                        <input v-if="handeltype == 2" type="text" id="jine" :placeholder="'可取金额'+title+'元'" v-model="quxian">
+                        <input v-if="handeltype == 2" type="text" id="jine" :placeholder="'可取金额'+money+'元'" v-model="quxian">
                     </div>
                     <div v-if="handeltype == 2" class="tipss">
                         <div>1、快速取现2万／笔，普通取现5万／笔</div>
@@ -51,6 +51,7 @@
                 showAlert: false, //弹出框
                 alertText: null, //弹出信息
                 balance: null,
+                money:null
             }
         },
         computed: {
@@ -59,9 +60,9 @@
                 'getUserinfo',
             ])
         },
-    
         created: function() {
-    
+            this.money = this.getUserinfo.money;
+            this.balance = this.getUserinfo.balance;
             //handeltype值为1时是充值 2是取现
             const handeltype = this.$route.params.handeltype;
             this.handeltype = handeltype;
@@ -108,6 +109,28 @@
                 }
             },
             Enchashment(){
+                let quxian = this.quxian;
+                let quxianl = Number(quxian);
+                let money = this.getUserinfo.money;
+                if(quxianl < this.balance && quxianl > 0){
+                    let balance = this.getUserinfo.balance;
+                    let Newmoney = money - quxianl;
+                    this.getUserinfo.money = Newmoney.toFixed(2);
+                    let Newbalance = balance - quxianl;
+                    this.getUserinfo.balance = Newbalance.toFixed(2);
+                    let instance = Toast({
+                        message: '取现成功',
+                        duration: -1,
+                        className: 'bg'
+                    });
+                    setTimeout(() => {
+                        instance.close();
+                        this.$router.go(-1);
+                    }, 2000);
+                }else{
+                    this.alertText = '余额不足';
+                    this.showAlert = true;
+                }
                 
             }
 

@@ -1,6 +1,6 @@
 <template>
     <div class="index">
-        <header-Top></header-Top>
+        <header-Top :head-title="'我的'"></header-Top>
         <div class="content">
             <div class="ment-main">
                 <div class="profile">
@@ -86,9 +86,10 @@
 </script>
 
 <style scoped lang="scss">
+
     .layOut {
         background: #fff;
-        text-indent: 2rem;
+        text-indent: 41px;
         height: 44px;
         line-height: 44px;
         width: 100%;

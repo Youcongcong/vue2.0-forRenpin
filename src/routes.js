@@ -4,6 +4,7 @@ import Cardindex from './views/rencard/CardIndex'
 import Login from './views/Login'
 import investment from './views/reninvestment/Investment'
 import profile from './views/profile/profile'
+import Carddeatils from './views/deatilescard/deatilcard'
 //充值
 import rechar from './views/Recharge/rechargev'
 //提现
@@ -44,6 +45,11 @@ let routes = [
         name: 'rechar',
         component: rechar,
         path: '/rechar/:handeltype'
+    },
+    {
+        path:'/deatilescard/deatilcard/:cardtype',
+        name:'Carddeatils',
+        component:Carddeatils
     },
     {
         name: 'profile',
