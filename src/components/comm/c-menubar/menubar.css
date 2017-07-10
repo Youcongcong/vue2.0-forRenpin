@@ -1,0 +1,53 @@
+.c-menubar {
+    background-color: var(--color-white);
+    display: flex;
+    text-align: center;
+    margin-bottom: 3px;
+
+    &.is-fixed {
+        position: fixed;
+        top:0;
+        right:0;
+        left:0;
+        z-index: 1;
+    }
+
+    & .c-menubar-item {
+        padding: 17px 0;
+        font-size: 15px;
+
+        &:last-child {
+            border-right: 0;
+        }
+
+        &.is-selected {
+            border-bottom: 3px solid var(--color-blue);
+            color: var(--color-blue);
+            margin-bottom: -3px;
+        }
+    }
+}
+
+.c-menubar-tab {
+    @mixin border-top #d9d9d9;
+    background-color: #fafafa;
+    display: flex;
+    position: absolute;
+    right:0;
+    left:0;
+    bottom:0;
+    text-align: center;
+
+    &.is-fixed {
+        position: fixed;
+        right:0;
+        left:0;
+        bottom:0;
+        z-index: 1;
+    }
+
+    &> .c-menubar-item.is-selected {
+        background-color: #eaeaea;
+        color: #26a2ff;
+    }
+}

@@ -18,7 +18,10 @@
                 <div class="page-tab-container">
                     <mt-tab-container class="page-tabbar-tab-container" v-model="active" swipeable value="puka">
                         <mt-tab-container-item id="puka">
-                            <mt-cell :key="n" v-for="n in 10" title="tab-container 1"></mt-cell>
+                            <mt-cell :key="n" v-for="n in 10" title="22">
+                                <div style="float:left">333</div>
+                                <div>222</div>
+                            </mt-cell>
                         </mt-tab-container-item>
                         <mt-tab-container-item id="yinka">
                             <mt-cell :key="n" v-for="n in 5" title="tab-container 2"></mt-cell>

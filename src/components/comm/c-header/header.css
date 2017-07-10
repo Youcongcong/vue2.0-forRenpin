@@ -1,0 +1,62 @@
+.c-header {
+    position: relative;
+    display: flex;
+    padding: 0 pxToRem(15);
+    align-items: center;
+    box-sizing: border-box;
+
+    background: var(--color-white);
+    color:#353535;
+    font-size:pxToRem(38);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:normal;
+    text-align: center;
+    & h1{
+      font-weight: normal;
+    }
+
+    & .icon-back, & .icon-more{
+      vertical-align: top;
+    }
+    & .c-button {
+      width: auto;
+      background-color: transparent;
+      color: inherit;
+      box-shadow: none;      
+      &.default:active {
+        background-color: transparent;
+      }
+      & .c-button-icon{
+        display: inline-block;
+        vertical-align: top;        
+      }
+    }
+    &-button {
+      flex: .5;
+      &.is-left { 
+        text-align: left;
+        & .c-button-icon {
+          margin-left: -5px;
+        }
+      }
+      &.is-right {
+        text-align: right;
+      }
+    }
+    &-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: inherit;
+      flex: 1;
+    }
+    &.is-fixed {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 12;
+    }
+  }

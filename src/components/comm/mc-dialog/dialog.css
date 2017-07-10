@@ -1,0 +1,49 @@
+
+.fuzzylayer{
+  position: absolute;
+  left:0;
+  top:0;
+  bottom: 0;
+  right:0;
+  z-index: 980;
+  background: black;
+  opacity: .3;
+}
+
+/*弹出消息警告*/
+.address-info-warning{
+  position:absolute;
+  left: 0;
+  right:0;
+  top:0;
+  bottom:0;
+  margin:auto;
+  z-index:7000;
+  min-width:pxToRem(378);
+  max-width:pxToRem(550);
+  height:pxToRem(200);
+  border-radius: pxToRem(10);
+  background:black;
+  opacity: .8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color:white;
+  & .c-icon{
+    font-size: pxToRem(60);
+  }
+  & span{
+    font-size: pxToRem(30);
+  }
+}
+
+.dialog-transition {
+  transition: transform 250ms ease;
+}
+.dialog-enter{
+  transform: scale(1.1)
+}
+.dialog-leave {
+  transform: scale(0.5)
+}

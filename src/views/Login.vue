@@ -21,10 +21,12 @@
       <a href="javascript:;" class=" quick-wx"><i class="icon icon-wx"></i><br><span class="txt-wechat">微信</span></a>
       <a href="javascript:;" class=" quick-money"><i class="icon icon-money"></i><br><span class="txt-quickMoney">京东钱包</span></a>
     </div>
+    <loading v-show="getShowStause">登录中...</loading>
   </div>
 </template>
 
 <script>
+import loading from 'components/loading'
   import {
     requestLogin
   } from '../api/api';
@@ -72,9 +74,11 @@
     computed: {
       // 使用对象展开运算符将 getters 混入 computed 对象中
       ...mapGetters([
-        'getUserinfo'
+        'getUserinfo',
+        'getShowStause'
         // ...
       ])
+      
     },
     methods: {
       ...mapActions({
@@ -116,21 +120,19 @@
       }
     },
     components: {
-      Hello
+      Hello,
+      loading
     },
     created() {
       
-      console.log()
-      var Params = {};
-      getUserList(Params).then(data => {
-        console.log(data)
-      })
+      
     }
   }
 </script>
 
 <style lang="scss" scoped>
   @import '~scss_page';
+  
   .mint-msgbox {
     border-radius: 20px
   }

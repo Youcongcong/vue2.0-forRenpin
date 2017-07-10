@@ -1,0 +1,32 @@
+.c-loading {
+  text-align: center;
+  & span{
+    vertical-align: middle;
+  }
+}
+
+.c-loading-snake {
+  vertical-align: middle;
+  animation: c-loading-snake-rotate .8s infinite linear;
+  border: 4px solid transparent;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+@-webkit-keyframes c-loading-snake-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes c-loading-snake-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}

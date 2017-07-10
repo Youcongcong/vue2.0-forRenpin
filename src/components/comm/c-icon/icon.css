@@ -1,0 +1,13 @@
+.c-icon {
+  @mixin iconfont;
+  display: inline-block;
+}
+
+.icon-back, .icon-menu{
+  font-size :20px;
+}
+
+.icon-more{
+  font-size :26px;
+  color:#B6B6B6;
+}

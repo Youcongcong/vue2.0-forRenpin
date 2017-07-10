@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="index">
-            <header-Top :head-title="'我的'"></header-Top>
+            <!-- <header-Top :head-title="'我的'"></header-Top> -->
             <div class="content">
                 <div class="ment-main">
                     <div class="profile">
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-    import headerTop from 'components/headTop'
+    //import headerTop from 'components/headTop'
     import foot_guide from 'components/footer'
     import cell from 'components/cell'
     import banner from 'components/banner'
@@ -49,7 +49,7 @@
             })
         },
         components: {
-            headerTop,
+            //headerTop,
             foot_guide,
             cell,
             banner

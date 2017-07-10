@@ -7,7 +7,7 @@
           'height': loadingSize,
           'width': loadingSize
         }"></div>
-        <span><slot></slot></span>
+        <span class="textdd"><slot></slot></span>
     </div>
 </template>
 
@@ -45,6 +45,15 @@
 </script>
 
 <style>
+.textdd{
+    vertical-align: middle;
+    border: 4px solid transparent;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    top: 55%;
+    left: 44%;
+  }
     .c-loading {
         position:fixed;
         height:100%;

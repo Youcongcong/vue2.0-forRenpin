@@ -1,0 +1,1 @@
+### c-paginator 用法
