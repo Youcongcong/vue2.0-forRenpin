@@ -9,7 +9,7 @@
                     <div v-if="handeltype == 2" class="tips col">预计12小时内到账。</div>
                     <div class="jin">
                         <label for="">金额</label>
-                        <input v-if="handeltype == 1" type="text" id="jine" placeholder="5元起充" v-model="chongzhi">
+                        <input v-if="handeltype == 1" type="text" id="jine" placeholder="5元起充" @keyup.enter="text" v-model="chongzhi">
                         <input v-if="handeltype == 2" type="text" id="jine" :placeholder="'可取金额'+money+'元'" v-model="quxian">
                     </div>
                     <div v-if="handeltype == 2" class="tipss">
@@ -132,8 +132,10 @@
                     this.showAlert = true;
                 }
                 
+            },
+            text(){
+                alert(2)
             }
-
         }
     }
 </script>

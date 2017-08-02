@@ -4,36 +4,38 @@
         <div class="task_title">{{taskTitle}}</div>
         <!--<div @inc="inc(incfuc)">{{c}}</div>-->
         {{c}}
-        <div class="task_cont">
-            <div class="task_list clearfix" v-for="item in taskData">
+        
+            <div class="task_cont">
+                <div class="task_list clearfix border-1px" v-for="item in taskData">
                     <div :class="item.iconClass" id="icon"></div>
                     <div class="content ellipsis">
                         <p class="textc">{{item.contantText}}</p>
                         <p class="status">{{item.status}}</p>
                     </div>
                     <div class="jifen">{{item.jifen}}</div>
+                </div>
             </div>
-        </div>
+        
     </div>
 </template>
 
 <script>
-import bus from '../../bus.js'
+    import bus from '../../bus.js'
     export default {
         data() {
             return {
-                c:''
+                c: ''
             }
         },
         props: ['taskTitle', 'taskData'],
-        created:function(){
-             bus.$on('inc',  (num) =>
+        created: function() {
+            bus.$on('inc', (num) =>
                 this.c = num
             );
-
+    
             console.log(this.$parent.$data)
         },
-        methods:{
+        methods: {
             // incfuc:function(msg){
             //     this.c = msg
             // }
@@ -44,7 +46,7 @@ import bus from '../../bus.js'
 <style lang="scss" scoped>
     @import '~assets/icon/icon_style.css';
     .task {
-        padding-bottom:50px;
+        padding-bottom: 50px;
         .task_title {
             font-size: 0.6rem;
             color: #ccc;
@@ -53,9 +55,9 @@ import bus from '../../bus.js'
             line-height: 28px;
         }
         .task_list {
-            background:#fff;
+            background: #fff;
             height: 3rem;
-            border-top: 1px solid #ccc;
+            position:relative;
             #icon {
                 width: 1rem;
                 height: 1rem;

@@ -63,9 +63,11 @@ a {
     text-decoration: none;
     color: #797474
 }
+
 .mint-button--primary {
     background: $theme-color;
-  }
+}
+
 #app {
     position: absolute;
     top: 0px;
@@ -76,9 +78,11 @@ a {
 .mint-indicator-mask {
     z-index: 999
 }
-input{
+
+input {
     border: none
 }
+
 .mint-indicator-wrapper {
     z-index: 888
 }
@@ -112,7 +116,6 @@ input{
 .fade-enter,
 .fade-leave-active {
     opacity: 0;
-        
 }
 
 .clearfix:after {
@@ -144,6 +147,65 @@ input{
     opacity: .7;
     background: #ddd3e0
 }
-.mint-msgbox-cancel{
+
+.mint-msgbox-cancel {
     font-size: 16px
+}
+
+@media(-webkit-min-device-pixel-ratio:1.5),
+(min-device-pixel-ratio:1.5) {
+    .border-1px:before {
+        height: 1px;
+        content: "";
+        left: 0;
+        width: 100%;
+        border-top: 1px solid #e3e5e9;
+        position: absolute;
+        -webkit-transform: scaleY(0.7);
+        transform: scaleY(0.7)
+    }
+}
+
+@media(-webkit-min-device-pixel-ratio:2),
+(min-device-pixel-ratio:2) {
+    .border-1px:before {
+        height: 1px;
+        content: "";
+        width: 100%;
+        left: 0;
+        top: -1px;
+        border-top: 1px solid #e3e5e9;
+        position: absolute;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5)
+    }
+}
+
+@media(-webkit-min-device-pixel-ratio:1.5),
+(min-device-pixel-ratio:1.5) {
+    .border-bootm-1px:after {
+        height: 1px;
+        content: "";
+        left: 0;
+        top: -1px;
+        width: 100%;
+        border-bottom: 1px solid #e3e5e9;
+        position: absolute;
+        -webkit-transform: scaleY(0.7);
+        transform: scaleY(0.7)
+    }
+}
+
+@media(-webkit-min-device-pixel-ratio:2),
+(min-device-pixel-ratio:2) {
+    .border-bootm-1px:after {
+        height: 1px;
+        content: "";
+        width: 100%;
+        left: 0;
+        border-bottom: 1px solid #e3e5e9;
+        position: absolute;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5)
+    }
 }

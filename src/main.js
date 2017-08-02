@@ -2,7 +2,7 @@ import babelpolyfill from 'babel-polyfill'
 import Vue from 'vue'
 import App from './App'
 //import ElementUI from 'element-ui'
-import 'src/common/js/rem.js'
+import 'src/common/js/hotcss.js'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import VueRouter from 'vue-router'
@@ -65,6 +65,7 @@ router.beforeEach((to, from, next) => {
     next()
   }
 });
+
 // router.afterEach(transition =>{
 //   NProgress.done();
 // })

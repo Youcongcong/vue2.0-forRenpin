@@ -15,7 +15,7 @@
       </div>
     </form>
     <Hello></Hello>
-    <div class="quick-login" style="display:">
+    <div class="quick-login border-1px" style="display:">
       <h4 class="txt-otherLogin">其他登录方式</h4>
       <a href="javascript:;" class=" quick-qq"><i class="icon icon-qq"></i><br><span class="txt-qq">QQ</span></a>
       <a href="javascript:;" class=" quick-wx"><i class="icon icon-wx"></i><br><span class="txt-wechat">微信</span></a>
@@ -167,12 +167,10 @@ import loading from 'components/loading'
       margin-top: 3rem;
       height: 55px;
       position: relative;
-      padding: 24.5px 0 0 0;
-      border-top: 1px solid #d7d7d7;
       text-align: center;
       h4 {
         position: absolute;
-        top: -11px;
+        top: -9px;
         left: 50%;
         background-color: white;
         padding: 0 10px;
@@ -185,7 +183,7 @@ import loading from 'components/loading'
         width: 25%;
         height: 47px;
         color: #616161;
-        margin: 10px;
+        margin: 40px 10px 10px 10px;
         font-size: 14px;
         display: inline-block;
         span {

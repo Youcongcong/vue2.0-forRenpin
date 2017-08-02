@@ -44,7 +44,7 @@
         name: 'footer',
     	data(){
             return{
-                
+                text:'hello'
             }
         },
         created(){

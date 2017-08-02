@@ -51,7 +51,12 @@
 				baseUrl: 'https://fuss10.elemecdn.com',
 				cardList: '',
 				integral: null, //用户积分,
-				childsay: ''
+				childsay: '',
+				addForm : {
+					name:'wang',
+					age:23,
+					sex:-1
+				}
 			}
 		},
 		computed:{
@@ -108,7 +113,9 @@
 			this.initdata()
 			getUserListPage({page:7}).then(data =>{
 				console.log(data)
-			})
+			});
+			let para = Object.assign({},this.addForm)
+			console.log(para)
 		},
 		components: {
 			headerTop,

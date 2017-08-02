@@ -11,28 +11,28 @@
                     <div class="renpin">
                         <div class="alltotal ">
                             <div class="clowh">昨日收益(元)<span></span></div>
-                            <div class="clowh aftermoney">{{shouyi}}</div>
+                            <div class="clowh aftermoney">{{ shouyi | formatMoney }}</div>
                             <div class="clowh">总资产(元)</div>
-                            <div class="clowh afallmoney">{{money}}</div>
+                            <div class="clowh afallmoney">{{ money | formatMoney }}</div>
                         </div>
                         <div class="payaessay f_clear">
                             <span class="pay">
-                                <router-link :to="{ name: 'rechar', params: {handeltype:1}}">
-                                        充值
+                                    <router-link :to="{ name: 'rechar', params: {handeltype:1}}">
+                                            充值
+                                        </router-link>
+                                    </span>
+                            <span>
+                                    <router-link :to="{ name: 'rechar', params: {handeltype:2}}">
+                                        取现
                                     </router-link>
                                 </span>
-                            <span>
-                                <router-link :to="{ name: 'rechar', params: {handeltype:2}}">
-                                    取现
-                                </router-link>
-                            </span>
                         </div>
                         <div class="prolist">
                             <div class="balance f_clear">
                                 <div class="proname"><span>余额(4.43%)</span><span class="prodes ">自动竞购人品宝</span></div>
                                 <div class="promon">￥{{balance}}</div>
                             </div>
-                            <div class="balance f_clear">
+                            <div class="balance f_clear ">
                                 <div class="proname"><span>人品宝(6.10%)</span><span class="prodes ">存取便捷，收益稳健</span></div>
                                 <div class="promon">￥{{yuebao}}</div>
                             </div>
@@ -71,9 +71,9 @@
                 </mt-loadmore>
             </div>
         </div>
-        <foot_guide></foot_guide>
+        <foot_guide ref="foot"></foot_guide>
     
-        
+    
     </div>
 </template>
 
@@ -95,13 +95,20 @@
                 yuebao: ''
             };
         },
-        created: function() {
+        mounted: function() {
+            console.log(this.$refs.foot.text)
             const useInfo = this.$store.state.userInfo;
             this.money = useInfo.money;
             this.yuebao = useInfo.yuebao;
             this.balance = useInfo.balance;
             this.shouyi = useInfo.shouyi;
         },
+        filters: {
+            formatMoney: function(val) {
+                return val + " 元";
+            },
+        },
+    
         methods: {
             ...mapActions([
                 'getuse'
@@ -146,7 +153,7 @@
     }
     
     .mint-loadmore {
-        height: 100%
+        height: 100%;
     }
     
     .f_clear:after {
@@ -178,7 +185,6 @@
     
     .alltotal .afallmoney {
         margin-top: 5px;
-        font-size: .8rem;
     }
     
     .payaessay {
@@ -211,6 +217,8 @@
         border-bottom: 1px solid #F2F2F2;
         padding: 3% 5%;
         line-height: 18px;
+        ;
+        position: relative;
     }
     
     .prolist .balance .proname {

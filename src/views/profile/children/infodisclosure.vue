@@ -12,7 +12,7 @@
                                 <td>ID</td>
                                 <td>排队资金</td>
                             </tr>
-                            <tr v-for="(item , index) in piList" ::key="index">
+                            <tr v-for="(item , index) in piList" :key="index">
                                 <td>{{item.id}}</td>
                                 <td>{{item.money}}元</td>
                             </tr>
@@ -23,55 +23,62 @@
                 </div>
                 <loading v-show="getShowStause"></loading>
             </div>
-            
+    
         </div>
     
     </div>
 </template>
 
 <script>
-    import {getUserListPage} from '../../../api/api';
-    import {mapGetters,mapActions} from 'vuex'
+    import {
+        getUserListPage
+    } from '../../../api/api';
+    import {
+        mapGetters,
+        mapActions
+    } from 'vuex'
     import loading from 'components/loading'
     import headerTop from 'components/headTop'
     export default {
         data() {
             return {
-                page :1,
-                totalpeo:"",
-                totalmoney:"",
-                piList:[],
-                length:null,
+                page: 1,
+                totalpeo: "",
+                totalmoney: "",
+                piList: [],
+                length: null,
             }
         },
-        created:function(){
+        created: function() {
             this.init()
         },
-        computed:{
-			...mapGetters([
+        computed: {
+            ...mapGetters([
                 'getShowStause'
             ])
-			
-		},
+    
+        },
         components: {
             headerTop,
             loading
         },
-        methods:{
-            init(){
-                getUserListPage({page:this.page}).then(data =>{
+        methods: {
+            init() {
+                getUserListPage({
+                    page: this.page
+                }).then(data => {
                     let List = data.data;
                     this.totalpeo = List.total;
                     this.totalmoney = List.tomoney;
                     let info = List.users;
                     this.length = info.length;
-                    for(const index in info){
+                    for (const index in info) {
                         this.piList.push(info[index])
                     }
                 })
             },
-            loadMore(){
-                this.page ++;
+            loadMore() {
+                this.page++;
                 this.init();
             }
         }
@@ -79,45 +86,51 @@
 </script>
 
 <style lang="scss" scoped>
-    .index{
-        z-index:101
+    .index {
+        z-index: 101
     }
+    
     .about {
-        padding:20px 3%;
-        p{
-        padding: 10px;
-        line-height: 30px;
+        padding: 20px 3%;
+        p {
+            padding: 10px;
+            line-height: 30px;
         }
     }
-    .brea{
+    
+    .brea {
         word-break: break-all;
     }
-    .colred{
-        color:red
+    
+    .colred {
+        color: red
     }
-    table{
-        margin-top:20px;
-        border-collapse:collapse;
-        width:100%;
-        th{
-            width:100%;
+    
+    table {
+        margin-top: 20px;
+        border-collapse: collapse;
+        width: 100%;
+        th {
+            width: 100%;
         }
-        td{
-            width:50%;
-            height:30px;
-            line-height:30px;
-            text-align:center;
-            border:1px solid #ccc;
+        td {
+            width: 50%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #ccc;
         }
     }
-    .bgco{
-        background:#dedede
+    
+    .bgco {
+        background: #dedede
     }
-    .load{
-        width:100%;
-        height:30px;
-        line-height:30px;
-        text-align:center;
-        color:#4260f1
+    
+    .load {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #4260f1
     }
 </style>

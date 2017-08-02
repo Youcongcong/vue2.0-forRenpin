@@ -30,12 +30,23 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     //
-    proxyTable: {},
+    //proxyTable: {},
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
+
+    //
+    proxyTable: {
+        '/v2': { //context: 确定应将哪些请求代理到目标主机
+          target: 'https://api.douban.com', //options.target: 目标主机到代理  https://api.douban.com/v2/book/1220562
+          changeOrigin: true,
+          pathRewrite: {
+             //'^/api': ''  //代理的接口默认会加上proxyTable第一个参数如v2,若接口不需要则pathRewrite里设'^/v2:':''
+          }
+        }
+      },
     cssSourceMap: false
   }
 }
