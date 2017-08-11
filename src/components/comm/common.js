@@ -14,7 +14,6 @@ export default function sheet(params){
     }
     
 }
-
 export function dialog (tips){
     if(!cdialog){
         cdialog = new mCdialog();

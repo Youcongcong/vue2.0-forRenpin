@@ -1,4 +1,5 @@
 <template>
+<transition name="router-slid" mode="out-in">
     <div class="index">
         <header-top :head-title="title" :go-back="true">
         </header-top>
@@ -28,6 +29,7 @@
         </div>
     
     </div>
+    </transition>
 </template>
 
 <script>
@@ -145,7 +147,16 @@
     .mint-button--primary {
         background: $theme-color;
     }
+   .router-slid-enter-active,
+    .router-slid-leave-active {
+        transition: all .3s;
+    }
     
+    .router-slid-enter,
+    .router-slid-leave-active {
+        transform: translate3d(100%, 0, 0);
+        opacity: 1;
+    }
     .tipss {
         padding: 20px 5%;
         font-size: 0.5rem;

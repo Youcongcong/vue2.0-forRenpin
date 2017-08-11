@@ -1,5 +1,6 @@
   
 <template>
+
     <div class="index" style="z-index:200">
         <header-top :go-back="true" :head-title="'专享权益'"></header-top>
     
@@ -40,7 +41,6 @@
             </div>
         </div>
     </div>
-    </transition>
 </template>
 
 <script>
@@ -114,14 +114,14 @@
         color: rgb(192, 204, 218);
     }
     
-    .router-fade-enter-active,
-    .router-fade-leave-active {
-        transition: all .3s;
-    }
+    // .router-fade-enter-active,
+    // .router-fade-leave-active {
+    //     transition: all .3s;
+    // }
     
-    .router-fade-enter,
-    .router-fade-leave-active {
-        transform: translate3d(100%, 0, 0);
-        opacity: .6;
-    }
+    // .router-fade-enter,
+    // .router-fade-leave-active {
+    //     transform: translate3d(100%, 0, 0);
+    //     opacity: .6;
+    // }
 </style>

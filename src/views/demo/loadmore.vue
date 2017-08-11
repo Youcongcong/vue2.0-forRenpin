@@ -12,9 +12,8 @@
 <style>
     .example-list {
         padding: 4px 4px 0;
-        list-style: none;
+        list-style: none; 
     }
-    
     .example-listitem {
         height: 50px;
         line-height: 50px;

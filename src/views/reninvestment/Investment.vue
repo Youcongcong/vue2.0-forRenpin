@@ -1,4 +1,5 @@
 <template>
+<transition name="dd" mode="in-out">
     <div class="index">
         <header-top :head-title="'人品投资'">
             <router-link to="/messge" slot="messagecenter" class="messri">消息中心</router-link>
@@ -75,6 +76,7 @@
     
     
     </div>
+    </transition>
 </template>
 
 <script>
@@ -325,14 +327,20 @@
         vertical-align: middle
     }
     
-    .router-slid-enter-active,
-    .router-slid-leave-active {
+    
+    .dd-leave-active,
+    .dd-enter-active {
         transition: all .3s;
     }
     
-    .router-slid-enter,
-    .router-slid-leave-active {
-        transform: translate3d(2rem, 0, 0);
-        opacity: 0;
+   
+    .dd-leave-active 
+    {
+        transform: translate3d(-100%, 0, 0);
+        opacity: 1;
+    }
+    .dd-enter-active{
+        transform: translate3d(100%, 100, 1000);
+        opacity: 1;
     }
 </style>

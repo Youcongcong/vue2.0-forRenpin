@@ -4,7 +4,6 @@
         <div class="task_title">{{taskTitle}}</div>
         <!--<div @inc="inc(incfuc)">{{c}}</div>-->
         {{c}}
-        
             <div class="task_cont">
                 <div class="task_list clearfix border-1px" v-for="item in taskData">
                     <div :class="item.iconClass" id="icon"></div>
