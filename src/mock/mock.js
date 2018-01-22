@@ -11,7 +11,7 @@ export default {
    */
   bootstrap() {
     let mock = new MockAdapter(axios);
-
+    console.log(mock)
 
     // mock success request
     mock.onGet('/success').reply(200, {

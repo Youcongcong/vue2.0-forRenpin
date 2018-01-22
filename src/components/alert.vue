@@ -1,12 +1,15 @@
  <template>
     <div class="alet_container">
 	    <section class="tip_text_container">
-            <div class="tip_icon">
-                <span></span>
-                <span></span>
-            </div>
+            <!-- <div class="tip_icon">
+            //     <span></span>
+            //     <span></span>
+            // </div> -->
+            <div class="m-box">
+		        <div class="m-duigou"></div>
+	        </div>
             <p class="tip_text">{{alertText}}</p>
-            <div class="confrim" @click="closeTip">确认</div>
+             <!--<div class="confrim" @click="closeTip">确认</div>-->
         </section>
     </div>
 </template>
@@ -104,5 +107,85 @@
             border-bottom-right-radius: 0.25rem;
         }
     }
-    
+        .m-box {
+			width: 45px;
+			height: 45px;
+			position: relative;
+			margin: 18px auto;
+			background: #00ED70;
+			border-radius: 50%;
+		}
+
+		.m-duigou {
+			width: 26px;
+			height: 14px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin: -13px 0 0 -13px;
+			-webkit-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+			overflow: hidden;
+		}
+
+		.m-duigou:before,
+		.m-duigou:after {
+			content: "";
+			position: absolute;
+			background: #fff;
+			border-radius: 2px
+		}
+
+		.m-duigou:before {
+			width: 4px;
+			height: 28px;
+			border-radius: 32%;
+			left: 0px;
+			-webkit-animation: dgLeft 0.5s linear 0.4s .1 both;
+			animation: dgLeft 0.5s linear 0.4s .1 both;
+		}
+
+		.m-duigou:after {
+			width: 51px;
+			height: 4px;
+			bottom: 0;
+			-webkit-animation: dgRight 0.5s linear 0.9s .1 both;
+			animation: dgRight 0.5s linear 0.9s  .1 both
+		}
+
+		@-webkit-keyframes dgLeft {
+			0% {
+				top: -100%
+			}
+			100% {
+				top: 0%
+			}
+		}
+
+		@-webkit-keyframes dgLeft {
+			0% {
+				top: -100%
+			}
+			100% {
+				top: 0%
+			}
+		}
+
+		@-webkit-keyframes dgRight {
+			0% {
+				left: -100%
+			}
+			100% {
+				left: 0%
+			}
+		}
+
+		@-webkit-keyframes dgRight {
+			0% {
+				left: -100%
+			}
+			100% {
+				left: 0%
+			}
+		}
 </style>

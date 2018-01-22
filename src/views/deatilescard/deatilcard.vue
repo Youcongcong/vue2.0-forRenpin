@@ -2,7 +2,7 @@
 <template>
 
     <div class="index" style="z-index:200">
-        <header-top :go-back="true" :head-title="'专享权益'"></header-top>
+        <header-top :go-back="true" @back="all" :head-title="'专享权益'"></header-top>
     
         <div class="content" style="background:#fff">
             <div class="ment-main">
@@ -74,6 +74,9 @@
                 this.active = cardtype;
                 this.cardtype = cardtype;
             },
+            all(){
+                alert(22)
+            }
         },
         components: {
             headerTop

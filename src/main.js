@@ -10,6 +10,7 @@ import store from './vuex/store'
 import Vuex from 'vuex'
 import routes from './routes'
 import Mock from './mock'
+console.log("ssssssssss",Mock)
 Mock.bootstrap();
 import VueLazyload from 'vue-lazyload'
 
